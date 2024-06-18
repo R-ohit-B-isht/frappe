@@ -10,13 +10,16 @@ jest.mock('air-datepicker', () => {
     __esModule: true,
     default: jest.fn().mockImplementation(() => {
       return {
-        selectDate: jest.fn(),
-        update: jest.fn(),
-        destroy: jest.fn(),
-        show: jest.fn(),
-        hide: jest.fn(),
-        clear: jest.fn(),
-        getSelectedDates: jest.fn().mockReturnValue([]),
+        selectDate: jest.fn(() => console.log("selectDate called")),
+        update: jest.fn(() => console.log("update called")),
+        destroy: jest.fn(() => console.log("destroy called")),
+        show: jest.fn(() => console.log("show called")),
+        hide: jest.fn(() => console.log("hide called")),
+        clear: jest.fn(() => console.log("clear called")),
+        getSelectedDates: jest.fn(() => {
+          console.log("getSelectedDates called");
+          return [];
+        }),
       };
     }),
   };
@@ -42,11 +45,14 @@ if (global.$) {
           const hijriDate = '30/11/1445'; // Mock Hijri date for testing
           selectedDates.push(new Date(2024, 5, 18)); // Mock Georgian date for testing
         }),
-        destroy: jest.fn(),
-        show: jest.fn(),
-        hide: jest.fn(),
-        clear: jest.fn(),
-        getSelectedDates: jest.fn().mockReturnValue(selectedDates),
+        destroy: jest.fn(() => console.log("destroy called")),
+        show: jest.fn(() => console.log("show called")),
+        hide: jest.fn(() => console.log("hide called")),
+        clear: jest.fn(() => console.log("clear called")),
+        getSelectedDates: jest.fn(() => {
+          console.log("getSelectedDates called");
+          return selectedDates;
+        }),
       };
     };
     console.log("datepicker method added to jQuery prototype");
