@@ -55,7 +55,7 @@ if (global.$) {
         }),
       };
       this.data('datepicker', datepickerInstance);
-      return datepickerInstance;
+      return this; // Return the jQuery object
     };
     // Mock the .data() method on the jQuery prototype
     const dataStore = new WeakMap();
