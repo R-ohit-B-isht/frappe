@@ -25,29 +25,35 @@ jest.mock('air-datepicker', () => {
 // Ensure jQuery is defined before extending its prototype
 if (global.$) {
   console.log("jQuery is defined");
-  // Extend jQuery prototype to include datepicker method
-  global.$.fn.datepicker = function() {
-    console.log("datepicker method called");
-    const selectedDates = [];
-    return {
-      selectDate: jest.fn().mockImplementation((date) => {
-        console.log("selectDate called with date:", date);
-        selectedDates.push(date);
-      }),
-      update: jest.fn().mockImplementation(() => {
-        console.log("update called");
-        const hijriDate = '30/11/1445'; // Mock Hijri date for testing
-        selectedDates.push(new Date(2024, 5, 18)); // Mock Georgian date for testing
-      }),
-      destroy: jest.fn(),
-      show: jest.fn(),
-      hide: jest.fn(),
-      clear: jest.fn(),
-      getSelectedDates: jest.fn().mockReturnValue(selectedDates),
+  // Check if global.$.fn is defined before extending its prototype
+  if (global.$.fn) {
+    console.log("global.$.fn is defined");
+    // Extend jQuery prototype to include datepicker method
+    global.$.fn.datepicker = function() {
+      console.log("datepicker method called");
+      const selectedDates = [];
+      return {
+        selectDate: jest.fn().mockImplementation((date) => {
+          console.log("selectDate called with date:", date);
+          selectedDates.push(date);
+        }),
+        update: jest.fn().mockImplementation(() => {
+          console.log("update called");
+          const hijriDate = '30/11/1445'; // Mock Hijri date for testing
+          selectedDates.push(new Date(2024, 5, 18)); // Mock Georgian date for testing
+        }),
+        destroy: jest.fn(),
+        show: jest.fn(),
+        hide: jest.fn(),
+        clear: jest.fn(),
+        getSelectedDates: jest.fn().mockReturnValue(selectedDates),
+      };
     };
-  };
-  console.log("datepicker method added to jQuery prototype");
-  console.log("jQuery prototype after adding datepicker:", global.$.fn);
+    console.log("datepicker method added to jQuery prototype");
+    console.log("jQuery prototype after adding datepicker:", global.$.fn);
+  } else {
+    console.error("global.$.fn is not defined");
+  }
 } else {
   console.error("jQuery is not defined");
 }
