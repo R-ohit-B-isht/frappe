@@ -18,7 +18,8 @@ jest.mock('air-datepicker', () => {
           console.log("update called");
           const hijriDate = '30/11/1445'; // Mock Hijri date for testing
           this.selectedDates = [new Date(2024, 5, 18)]; // Mock Georgian date for testing
-          $('#datepicker').val(hijriDate);
+          // Mock setting the value without referencing DOM elements
+          this.mockDatepickerValue = hijriDate;
         }),
         destroy: jest.fn(),
         show: jest.fn(),
@@ -46,7 +47,8 @@ if ($) {
         console.log("update called");
         const hijriDate = '30/11/1445'; // Mock Hijri date for testing
         self.selectedDates = [new Date(2024, 5, 18)]; // Mock Georgian date for testing
-        $('#datepicker').val(hijriDate);
+        // Mock setting the value without referencing DOM elements
+        self.mockDatepickerValue = hijriDate;
       }),
       destroy: jest.fn(),
       show: jest.fn(),
