@@ -72,7 +72,7 @@ if (global.$) {
         this.each(function() {
           if (key === 'datepicker') {
             console.log("Setting datepicker instance:", value);
-            dataStore.set(this, value);
+            dataStore.set(this[0], value);
           } else {
             console.log(`Setting ${key}:`, value);
             this[key] = value;
