@@ -28,9 +28,11 @@ $.fn.datepicker = function() {
   const self = this;
   return {
     selectDate: jest.fn().mockImplementation((date) => {
+      console.log("selectDate called with date:", date);
       self.selectedDates = [date];
     }),
     update: jest.fn().mockImplementation(() => {
+      console.log("update called");
       const hijriDate = '30/11/1445'; // Mock Hijri date for testing
       self.selectedDates = [new Date(2024, 5, 18)]; // Mock Georgian date for testing
       $('#datepicker').val(hijriDate);
