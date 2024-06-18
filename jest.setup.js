@@ -39,11 +39,13 @@ if (global.$) {
         selectDate: jest.fn().mockImplementation((date) => {
           console.log("selectDate called with date:", date);
           selectedDates.push(date);
+          $(this).val('30/11/1445'); // Mock setting the input value to the expected Hijri date
         }),
         update: jest.fn().mockImplementation(() => {
           console.log("update called");
           const hijriDate = '30/11/1445'; // Mock Hijri date for testing
           selectedDates.push(new Date(2024, 5, 18)); // Mock Georgian date for testing
+          $(this).val(hijriDate); // Mock setting the input value to the Hijri date
         }),
         destroy: jest.fn(() => console.log("destroy called")),
         show: jest.fn(() => console.log("show called")),
