@@ -35,7 +35,7 @@ if (global.$) {
     global.$.fn.datepicker = function() {
       console.log("datepicker method called");
       const selectedDates = [];
-      return {
+      const datepickerInstance = {
         selectDate: jest.fn().mockImplementation((date) => {
           console.log("selectDate called with date:", date);
           selectedDates.push(date);
@@ -54,6 +54,8 @@ if (global.$) {
           return selectedDates;
         }),
       };
+      $(this).data('datepicker', datepickerInstance);
+      return datepickerInstance;
     };
     console.log("datepicker method added to jQuery prototype");
     console.log("jQuery prototype after adding datepicker:", global.$.fn);
