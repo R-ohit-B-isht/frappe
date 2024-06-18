@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import './datepicker_i18n';
+// import './datepicker_i18n';
 
 describe('Hijri Calendar Datepicker', () => {
     let datepicker;
