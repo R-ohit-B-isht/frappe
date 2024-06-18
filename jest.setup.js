@@ -72,7 +72,7 @@ if (global.$) {
         this.each(function() {
           if (key === 'datepicker') {
             console.log("Setting datepicker instance:", value);
-            if (this instanceof $ && this instanceof HTMLElement) {
+            if (this instanceof HTMLElement) {
               dataStore.set(this, value);
             } else {
               console.error("Invalid key for WeakMap: this is not an object");
