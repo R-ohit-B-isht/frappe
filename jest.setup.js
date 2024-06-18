@@ -23,10 +23,10 @@ jest.mock('air-datepicker', () => {
 });
 
 // Ensure jQuery is defined before extending its prototype
-if ($) {
+if (global.$) {
   console.log("jQuery is defined");
   // Extend jQuery prototype to include datepicker method
-  $.fn.datepicker = function() {
+  global.$.fn.datepicker = function() {
     console.log("datepicker method called");
     const selectedDates = [];
     return {
@@ -47,7 +47,7 @@ if ($) {
     };
   };
   console.log("datepicker method added to jQuery prototype");
-  console.log("jQuery prototype after adding datepicker:", $.fn);
+  console.log("jQuery prototype after adding datepicker:", global.$.fn);
 } else {
   console.error("jQuery is not defined");
 }
