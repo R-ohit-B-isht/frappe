@@ -37,6 +37,7 @@ if ($) {
     };
   };
   console.log("datepicker method added to jQuery prototype");
+  console.log("jQuery prototype after adding datepicker:", $.fn);
 } else {
   console.error("jQuery is not defined");
 }
