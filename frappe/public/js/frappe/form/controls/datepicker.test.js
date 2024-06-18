@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import 'air-datepicker';
 import './datepicker_i18n';
 
 describe('Hijri Calendar Datepicker', () => {
