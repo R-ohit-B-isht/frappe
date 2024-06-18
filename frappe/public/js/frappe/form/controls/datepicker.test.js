@@ -13,7 +13,9 @@ describe('Hijri Calendar Datepicker', () => {
     });
 
     afterEach(() => {
-        datepicker.destroy();
+        if (datepicker && typeof datepicker.destroy === 'function') {
+            datepicker.destroy();
+        }
     });
 
     it('should display the correct Hijri date for a given Georgian date', () => {
@@ -29,7 +31,7 @@ describe('Hijri Calendar Datepicker', () => {
         $('#datepicker').val(hijriDate);
         datepicker.update();
 
-        const selectedDate = datepicker.selectedDates[0];
+        const selectedDate = datepicker.getSelectedDates()[0];
         const expectedDate = new Date(2024, 5, 18); // June 18, 2024
         expect(selectedDate.toDateString()).toBe(expectedDate.toDateString());
     });
