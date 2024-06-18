@@ -57,6 +57,17 @@ if (global.$) {
       $(this).data('datepicker', datepickerInstance);
       return datepickerInstance;
     };
+    // Mock the .data() method on the jQuery prototype
+    global.$.fn.data = jest.fn().mockImplementation(function(key, value) {
+      if (value === undefined) {
+        return this[0] ? this[0][key] : undefined;
+      } else {
+        this.each(function() {
+          this[key] = value;
+        });
+        return this;
+      }
+    });
     console.log("datepicker method added to jQuery prototype");
     console.log("jQuery prototype after adding datepicker:", global.$.fn);
   } else {
