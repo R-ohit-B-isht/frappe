@@ -1,3 +1,8 @@
+import $ from 'jquery';
+global.$ = global.jQuery = $;
+
+console.log("jest.setup.js file loaded");
+
 // Mock air-datepicker to avoid issues in Jest environment
 jest.mock('air-datepicker', () => {
   console.log("air-datepicker mock applied");
@@ -16,11 +21,6 @@ jest.mock('air-datepicker', () => {
     }),
   };
 });
-
-import $ from 'jquery';
-global.$ = global.jQuery = $;
-
-console.log("jest.setup.js file loaded");
 
 // Extend jQuery prototype to include datepicker method
 $.fn.datepicker = function() {
