@@ -8,25 +8,7 @@ jest.mock('air-datepicker', () => {
   console.log("air-datepicker mock applied");
   return {
     __esModule: true,
-    default: jest.fn().mockImplementation(() => {
-      const selectedDates = [];
-      return {
-        selectDate: jest.fn().mockImplementation((date) => {
-          console.log("selectDate called with date:", date);
-          selectedDates.push(date);
-        }),
-        update: jest.fn().mockImplementation(() => {
-          console.log("update called");
-          const hijriDate = '30/11/1445'; // Mock Hijri date for testing
-          selectedDates.push(new Date(2024, 5, 18)); // Mock Georgian date for testing
-        }),
-        destroy: jest.fn(),
-        show: jest.fn(),
-        hide: jest.fn(),
-        clear: jest.fn(),
-        getSelectedDates: jest.fn().mockReturnValue(selectedDates),
-      };
-    }),
+    default: jest.fn(),
   };
 });
 
