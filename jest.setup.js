@@ -54,19 +54,29 @@ if (global.$) {
           return selectedDates;
         }),
       };
-      $(this).data('datepicker', datepickerInstance);
+      this.data('datepicker', datepickerInstance);
       return datepickerInstance;
     };
     // Mock the .data() method on the jQuery prototype
+    const dataStore = new WeakMap();
     global.$.fn.data = jest.fn().mockImplementation(function(key, value) {
+      console.log(`.data() called with key: ${key}, value: ${value}`);
       if (value === undefined) {
         if (key === 'datepicker') {
-          return this[0] ? this[0].datepicker : undefined;
+          console.log("Returning datepicker instance:", dataStore.get(this[0]));
+          return dataStore.get(this[0]);
         }
+        console.log("Returning key value:", this[0] ? this[0][key] : undefined);
         return this[0] ? this[0][key] : undefined;
       } else {
         this.each(function() {
-          this[key] = value;
+          if (key === 'datepicker') {
+            console.log("Setting datepicker instance:", value);
+            dataStore.set(this, value);
+          } else {
+            console.log(`Setting ${key}:`, value);
+            this[key] = value;
+          }
         });
         return this;
       }
