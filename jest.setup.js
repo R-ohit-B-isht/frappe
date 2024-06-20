@@ -34,6 +34,7 @@ jest.mock('air-datepicker', () => {
                         console.log('selectDate: set hijriDate to', this.hijriDate); // Debugging log
                     }
                     console.log('selectDate: final state', this); // Debugging log
+                    console.log('selectDate: hijriDate is', this.hijriDate); // Additional logging
                 }),
                 update: jest.fn(function() {
                     console.log('update: initial state', this); // Debugging log
@@ -50,6 +51,7 @@ jest.mock('air-datepicker', () => {
                     } else {
                         console.log('update: selectedDate is null');
                     }
+                    console.log('update: hijriDate is', this.hijriDate); // Additional logging
                 }),
                 getSelectedDates: jest.fn(function() {
                     console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
