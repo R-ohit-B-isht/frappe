@@ -17,6 +17,10 @@ jest.mock('air-datepicker', () => {
     };
 });
 
+if (!$.fn) {
+    $.fn = {};
+}
+
 $.fn.datepicker = function() {
     return {
         selectDate: function(date) {
