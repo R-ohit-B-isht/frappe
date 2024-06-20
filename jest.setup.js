@@ -7,6 +7,7 @@ function mockConvertGeorgianToHijri(date) {
     // Implement the logic for converting Georgian date to Hijri date
     // This is a placeholder implementation
     const hijriDate = '30/11/1445'; // Hardcoded expected Hijri date for the test
+    console.log('mockConvertGeorgianToHijri called with:', date); // Debugging log
     return hijriDate;
 }
 
@@ -15,6 +16,7 @@ function mockConvertHijriToGeorgian(hijriDate) {
     // This is a placeholder implementation
     if (!hijriDate) return null;
     const georgianDate = new Date(2024, 5, 18); // Hardcoded expected Georgian date for the test
+    console.log('mockConvertHijriToGeorgian called with:', hijriDate); // Debugging log
     return georgianDate;
 }
 
