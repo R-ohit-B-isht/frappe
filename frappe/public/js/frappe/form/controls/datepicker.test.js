@@ -33,6 +33,6 @@ describe('Hijri Calendar Datepicker', () => {
 
         const selectedDate = datepicker.getSelectedDates()[0];
         const expectedDate = new Date(2024, 5, 18); // June 18, 2024
-        expect(selectedDate.toDateString()).toBe(expectedDate.toDateString());
+        expect(selectedDate ? selectedDate.toDateString() : null).toBe(expectedDate.toDateString());
     });
 });
