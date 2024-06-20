@@ -111,6 +111,10 @@ $.fn.val = function(value) {
         this.each(function() {
             this.hijriDate = value;
             console.log('val: set hijriDate to', this.hijriDate); // Debugging log
+            // Ensure the update method is called to reflect the change in hijriDate
+            if (this.datepicker) {
+                this.datepicker.update();
+            }
         });
         return this;
     }
