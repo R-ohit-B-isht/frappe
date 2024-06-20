@@ -2,6 +2,31 @@ import $ from 'jquery';
 
 global.$ = global.jQuery = $;
 
+// Helper functions for date conversion
+function convertGeorgianToHijri(date) {
+    // Implement the logic for converting Georgian date to Hijri date
+    // This is a placeholder implementation
+    const hijriDate = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
+    }).format(date);
+    return hijriDate;
+}
+
+function convertHijriToGeorgian(hijriDate) {
+    // Implement the logic for converting Hijri date to Georgian date
+    // This is a placeholder implementation
+    const [day, month, year] = hijriDate.split('/').map(Number);
+    const hijriDateObj = new Date(year, month - 1, day);
+    const georgianDate = new Intl.DateTimeFormat('en-US', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
+    }).format(hijriDateObj);
+    return new Date(georgianDate);
+}
+
 // Mock air-datepicker to avoid dependency on jQuery being globally available
 jest.mock('air-datepicker', () => {
     return {
@@ -71,28 +96,3 @@ $.fn.data = function(key, value) {
         return this;
     }
 };
-
-// Helper functions for date conversion
-function convertGeorgianToHijri(date) {
-    // Implement the logic for converting Georgian date to Hijri date
-    // This is a placeholder implementation
-    const hijriDate = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric'
-    }).format(date);
-    return hijriDate;
-}
-
-function convertHijriToGeorgian(hijriDate) {
-    // Implement the logic for converting Hijri date to Georgian date
-    // This is a placeholder implementation
-    const [day, month, year] = hijriDate.split('/').map(Number);
-    const hijriDateObj = new Date(year, month - 1, day);
-    const georgianDate = new Intl.DateTimeFormat('en-US', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric'
-    }).format(hijriDateObj);
-    return new Date(georgianDate);
-}
