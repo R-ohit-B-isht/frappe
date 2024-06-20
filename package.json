@@ -8,7 +8,9 @@
     "test": "jest"
   },
   "jest": {
-    "setupFiles": ["./jest.setup.js"],
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
@@ -25,7 +27,6 @@
     "url": "git+https://github.com/frappe/frappe.git"
   },
   "author": "Frappe Technologies Pvt. Ltd.",
-
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/frappe/frappe/issues"
@@ -71,6 +72,7 @@
     "frappe-gantt": "^0.6.0",
     "highlight.js": "^10.4.1",
     "html5-qrcode": "^2.3.8",
+    "jest-environment-jsdom": "^29.7.0",
     "jquery": "3.7.0",
     "js-sha256": "^0.9.0",
     "jsbarcode": "^3.11.0",
