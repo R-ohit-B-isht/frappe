@@ -2,9 +2,6 @@ import $ from 'jquery';
 
 global.$ = global.jQuery = $;
 
-require('air-datepicker');
-require('air-datepicker/air-datepicker.css');
-
 $.fn.datepicker = function() {
     return {
         selectDate: function(date) {
@@ -21,3 +18,18 @@ $.fn.datepicker = function() {
         }
     };
 };
+
+// Mock air-datepicker to avoid dependency on jQuery being globally available
+jest.mock('air-datepicker', () => {
+    return {
+        __esModule: true,
+        default: jest.fn().mockImplementation(() => {
+            return {
+                selectDate: jest.fn(),
+                update: jest.fn(),
+                getSelectedDates: jest.fn().mockReturnValue([]),
+                destroy: jest.fn()
+            };
+        })
+    };
+});
