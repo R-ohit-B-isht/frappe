@@ -1,3 +1,7 @@
+import $ from 'jquery';
+
+global.$ = global.jQuery = $;
+
 // Mock air-datepicker to avoid dependency on jQuery being globally available
 jest.mock('air-datepicker', () => {
     return {
@@ -12,10 +16,6 @@ jest.mock('air-datepicker', () => {
         })
     };
 });
-
-import $ from 'jquery';
-
-global.$ = global.jQuery = $;
 
 $.fn.datepicker = function() {
     return {
