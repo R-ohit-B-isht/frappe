@@ -52,6 +52,10 @@ jest.mock('air-datepicker', () => {
                         console.log('update: selectedDate is null');
                     }
                     console.log('update: hijriDate is', this.hijriDate); // Additional logging
+                    // Ensure the hijriDate is correctly set
+                    if (!this.hijriDate) {
+                        console.log('update: hijriDate is not set correctly');
+                    }
                 }),
                 getSelectedDates: jest.fn(function() {
                     console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
@@ -124,7 +128,7 @@ $.fn.val = function(value) {
             console.log('val: set hijriDate to', this.hijriDate); // Debugging log
             // Ensure the update method is called to reflect the change in hijriDate
             if (this.datepicker) {
-                console.log('val: calling update on datepicker'); // Debugging log
+                console.log('val: calling update on datepicker with hijriDate', this.hijriDate); // Debugging log
                 this.datepicker.update();
             }
         });
