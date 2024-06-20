@@ -23,6 +23,7 @@ describe('Hijri Calendar Datepicker', () => {
         datepicker.selectDate(georgianDate);
 
         const displayedDate = $('#datepicker').val();
+        console.log('Displayed Hijri Date:', displayedDate); // Debugging log
         expect(displayedDate).toBe('30/11/1445'); // Expected Hijri date
     });
 
@@ -32,6 +33,7 @@ describe('Hijri Calendar Datepicker', () => {
         datepicker.update();
 
         const selectedDate = datepicker.getSelectedDates()[0];
+        console.log('Selected Georgian Date:', selectedDate ? selectedDate.toDateString() : null); // Debugging log
         const expectedDate = new Date(2024, 5, 18); // June 18, 2024
         expect(selectedDate ? selectedDate.toDateString() : null).toBe(expectedDate.toDateString());
     });
