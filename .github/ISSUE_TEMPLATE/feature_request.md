@@ -1,18 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea to improve Frappe
-labels: feature-request
+about: Suggest an idea to improve frappe_docker
+labels: enhancement
 ---
 
 <!--
 Welcome to the Frappe Framework issue tracker! Before creating an issue, please heed the following:
-
-1. This tracker should only be used to report bugs and request features / enhancements to Frappe
-    - For questions and general support, refer to https://stackoverflow.com/questions/tagged/frappe
-    - For documentation issues, use https://frappeframework.com/docs/user/en or the developer cheetsheet https://frappeframework.com/docs/user/en/bench/resources/bench-commands-cheatsheet
-2. Use the search function before creating a new issue. Duplicates will be closed and directed to
-   the original discussion.
-3. When making a feature request, make sure to be as verbose as possible. The better you convey your message, the     greater the drive to make it happen.
+1. Use the search function before creating a new issue. Duplicates will be closed and directed to the original discussion.
+2. When making a feature request, make sure to be as verbose as possible. The better you convey your message, the greater the drive to make it happen.
 -->
 
 **Is your feature request related to a problem? Please describe.**
