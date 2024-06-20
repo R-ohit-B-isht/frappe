@@ -119,16 +119,16 @@ $.fn.data = function(key, value) {
 // Mock the jQuery val() function to return the expected values based on the internal state of the mocked datepicker
 $.fn.val = function(value) {
     if (value === undefined) {
-        const hijriDate = this[0] && this[0].hijriDate ? this[0].hijriDate : '';
+        const hijriDate = this[0] && this[0].datepicker ? this[0].datepicker.hijriDate : '';
         console.log('val: returning hijriDate', hijriDate); // Debugging log
         return hijriDate;
     } else {
         this.each(function() {
-            this.hijriDate = value;
-            console.log('val: set hijriDate to', this.hijriDate); // Debugging log
+            this.datepicker.hijriDate = value;
+            console.log('val: set hijriDate to', this.datepicker.hijriDate); // Debugging log
             // Ensure the update method is called to reflect the change in hijriDate
             if (this.datepicker) {
-                console.log('val: calling update on datepicker with hijriDate', this.hijriDate); // Debugging log
+                console.log('val: calling update on datepicker with hijriDate', this.datepicker.hijriDate); // Debugging log
                 this.datepicker.update();
             }
         });
