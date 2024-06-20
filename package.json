@@ -17,7 +17,8 @@
       "**/?(*.)+(spec|test).[tj]s?(x)",
       "**/frappe/public/js/frappe/form/controls/**/*.test.js",
       "**/frappe/public/js/frappe/form/controls/**/*.spec.js"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   },
   "repository": {
     "type": "git",
