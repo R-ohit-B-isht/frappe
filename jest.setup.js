@@ -12,16 +12,19 @@ jest.mock('air-datepicker', () => {
                     this.selectedDate = date;
                     // Mock conversion from Georgian to Hijri date
                     if (date instanceof Date) {
-                        if (date.getFullYear() === 2024 && date.getMonth() === 5 && date.getDate() === 18) {
-                            this.hijriDate = '30/11/1445';
-                        }
+                        const georgianToHijri = {
+                            '2024-06-18': '30/11/1445'
+                        };
+                        const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                        this.hijriDate = georgianToHijri[dateString] || '';
                     }
                 }),
                 update: jest.fn(function() {
                     // Mock conversion from Hijri to Georgian date
-                    if (this.hijriDate === '30/11/1445') {
-                        this.selectedDate = new Date(2024, 5, 18);
-                    }
+                    const hijriToGeorgian = {
+                        '30/11/1445': new Date(2024, 5, 18)
+                    };
+                    this.selectedDate = hijriToGeorgian[this.hijriDate] || null;
                 }),
                 getSelectedDates: jest.fn(function() {
                     return [this.selectedDate];
@@ -42,16 +45,19 @@ $.fn.datepicker = function() {
             this.selectedDate = date;
             // Mock conversion from Georgian to Hijri date
             if (date instanceof Date) {
-                if (date.getFullYear() === 2024 && date.getMonth() === 5 && date.getDate() === 18) {
-                    this.hijriDate = '30/11/1445';
-                }
+                const georgianToHijri = {
+                    '2024-06-18': '30/11/1445'
+                };
+                const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                this.hijriDate = georgianToHijri[dateString] || '';
             }
         },
         update: function() {
             // Mock conversion from Hijri to Georgian date
-            if (this.hijriDate === '30/11/1445') {
-                this.selectedDate = new Date(2024, 5, 18);
-            }
+            const hijriToGeorgian = {
+                '30/11/1445': new Date(2024, 5, 18)
+            };
+            this.selectedDate = hijriToGeorgian[this.hijriDate] || null;
         },
         getSelectedDates: function() {
             return [this.selectedDate];
