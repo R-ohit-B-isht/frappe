@@ -43,6 +43,12 @@ jest.mock('air-datepicker', () => {
                     this.selectedDate = georgianDate || null;
                     console.log('update: set selectedDate to', this.selectedDate); // Debugging log
                     console.log('update: final state', this); // Debugging log
+                    // Additional logging to verify the update process
+                    if (this.selectedDate) {
+                        console.log('update: selectedDate is set to', this.selectedDate.toDateString());
+                    } else {
+                        console.log('update: selectedDate is null');
+                    }
                 }),
                 getSelectedDates: jest.fn(function() {
                     console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
