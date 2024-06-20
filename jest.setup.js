@@ -87,3 +87,15 @@ $.fn.data = function(key, value) {
         return this;
     }
 };
+
+// Mock the jQuery val() function to return the expected values based on the internal state of the mocked datepicker
+$.fn.val = function(value) {
+    if (value === undefined) {
+        return this[0] && this[0].hijriDate ? this[0].hijriDate : '';
+    } else {
+        this.each(function() {
+            this.hijriDate = value;
+        });
+        return this;
+    }
+};
