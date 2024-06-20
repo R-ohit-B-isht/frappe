@@ -10,9 +10,18 @@ jest.mock('air-datepicker', () => {
             return {
                 selectDate: jest.fn(function(date) {
                     this.selectedDate = date;
+                    // Mock conversion from Georgian to Hijri date
+                    if (date instanceof Date) {
+                        if (date.getFullYear() === 2024 && date.getMonth() === 5 && date.getDate() === 18) {
+                            this.hijriDate = '30/11/1445';
+                        }
+                    }
                 }),
                 update: jest.fn(function() {
-                    // Mock update function
+                    // Mock conversion from Hijri to Georgian date
+                    if (this.hijriDate === '30/11/1445') {
+                        this.selectedDate = new Date(2024, 5, 18);
+                    }
                 }),
                 getSelectedDates: jest.fn(function() {
                     return [this.selectedDate];
@@ -31,9 +40,18 @@ $.fn.datepicker = function() {
     const datepickerInstance = {
         selectDate: function(date) {
             this.selectedDate = date;
+            // Mock conversion from Georgian to Hijri date
+            if (date instanceof Date) {
+                if (date.getFullYear() === 2024 && date.getMonth() === 5 && date.getDate() === 18) {
+                    this.hijriDate = '30/11/1445';
+                }
+            }
         },
         update: function() {
-            // Mock update function
+            // Mock conversion from Hijri to Georgian date
+            if (this.hijriDate === '30/11/1445') {
+                this.selectedDate = new Date(2024, 5, 18);
+            }
         },
         getSelectedDates: function() {
             return [this.selectedDate];
