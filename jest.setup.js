@@ -22,7 +22,7 @@ if (!$.fn) {
 }
 
 $.fn.datepicker = function() {
-    return {
+    const datepickerInstance = {
         selectDate: function(date) {
             this.selectedDate = date;
         },
@@ -36,4 +36,18 @@ $.fn.datepicker = function() {
             // Mock destroy function
         }
     };
+
+    $(this).data('datepicker', datepickerInstance);
+    return this;
+};
+
+$.fn.data = function(key, value) {
+    if (value === undefined) {
+        return this[0] && this[0][key];
+    } else {
+        this.each(function() {
+            this[key] = value;
+        });
+        return this;
+    }
 };
