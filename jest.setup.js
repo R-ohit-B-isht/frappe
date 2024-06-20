@@ -14,7 +14,8 @@ function mockConvertGeorgianToHijri(date) {
 
 function mockConvertHijriToGeorgian(hijriDate) {
     if (!hijriDate) return null;
-    const georgianDate = moment(hijriDate, 'iDD/iMM/iYYYY').toDate();
+    const westernHijriDate = hijriDate.replace(/[٠١٢٣٤٥٦٧٨٩]/g, d => '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
+    const georgianDate = moment(westernHijriDate, 'iDD/iMM/iYYYY').toDate();
     console.log('mockConvertHijriToGeorgian called with:', hijriDate, 'converted to:', georgianDate); // Debugging log
     return georgianDate;
 }
