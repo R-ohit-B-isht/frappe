@@ -30,14 +30,17 @@ jest.mock('air-datepicker', () => {
                     if (date instanceof Date) {
                         const hijriDate = mockConvertGeorgianToHijri(date);
                         this.hijriDate = hijriDate || '';
+                        console.log('selectDate: set hijriDate to', this.hijriDate); // Debugging log
                     }
                 }),
                 update: jest.fn(function() {
                     // Dynamic conversion from Hijri to Georgian date
                     const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
                     this.selectedDate = georgianDate || null;
+                    console.log('update: set selectedDate to', this.selectedDate); // Debugging log
                 }),
                 getSelectedDates: jest.fn(function() {
+                    console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
                     return [this.selectedDate];
                 }),
                 destroy: jest.fn()
@@ -58,14 +61,17 @@ $.fn.datepicker = function() {
             if (date instanceof Date) {
                 const hijriDate = mockConvertGeorgianToHijri(date);
                 this.hijriDate = hijriDate || '';
+                console.log('selectDate: set hijriDate to', this.hijriDate); // Debugging log
             }
         },
         update: function() {
             // Dynamic conversion from Hijri to Georgian date
             const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
             this.selectedDate = georgianDate || null;
+            console.log('update: set selectedDate to', this.selectedDate); // Debugging log
         },
         getSelectedDates: function() {
+            console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
             return [this.selectedDate];
         },
         destroy: function() {
@@ -95,6 +101,7 @@ $.fn.val = function(value) {
     } else {
         this.each(function() {
             this.hijriDate = value;
+            console.log('val: set hijriDate to', this.hijriDate); // Debugging log
         });
         return this;
     }
