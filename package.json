@@ -4,13 +4,27 @@
     "build": "node esbuild",
     "production": "node esbuild --production",
     "watch": "node esbuild --watch",
-    "coverage:report": "npx nyc report --reporter=clover"
+    "coverage:report": "npx nyc report --reporter=clover",
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": ["./jest.setup.js"],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[tj]s?(x)",
+      "**/frappe/public/js/frappe/form/controls/**/*.test.js",
+      "**/frappe/public/js/frappe/form/controls/**/*.spec.js"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frappe/frappe.git"
   },
   "author": "Frappe Technologies Pvt. Ltd.",
+
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/frappe/frappe/issues"
