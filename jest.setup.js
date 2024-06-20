@@ -7,8 +7,9 @@ global.$ = global.jQuery = $;
 function mockConvertGeorgianToHijri(date) {
     if (!(date instanceof Date)) return '';
     const hijriDate = moment(date).format('iDD/iMM/iYYYY');
-    console.log('mockConvertGeorgianToHijri called with:', date, 'converted to:', hijriDate); // Debugging log
-    return hijriDate;
+    const westernHijriDate = hijriDate.replace(/[٠١٢٣٤٥٦٧٨٩]/g, d => '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
+    console.log('mockConvertGeorgianToHijri called with:', date, 'converted to:', westernHijriDate); // Debugging log
+    return westernHijriDate;
 }
 
 function mockConvertHijriToGeorgian(hijriDate) {
