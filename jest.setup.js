@@ -1,22 +1,20 @@
 import $ from 'jquery';
+import moment from 'moment-hijri';
 
 global.$ = global.jQuery = $;
 
 // Helper functions for date conversion
 function mockConvertGeorgianToHijri(date) {
-    // Implement the logic for converting Georgian date to Hijri date
-    // This is a placeholder implementation
-    const hijriDate = '30/11/1445'; // Hardcoded expected Hijri date for the test
-    console.log('mockConvertGeorgianToHijri called with:', date); // Debugging log
+    if (!(date instanceof Date)) return '';
+    const hijriDate = moment(date).format('iDD/iMM/iYYYY');
+    console.log('mockConvertGeorgianToHijri called with:', date, 'converted to:', hijriDate); // Debugging log
     return hijriDate;
 }
 
 function mockConvertHijriToGeorgian(hijriDate) {
-    // Implement the logic for converting Hijri date to Georgian date
-    // This is a placeholder implementation
     if (!hijriDate) return null;
-    const georgianDate = new Date(2024, 5, 18); // Hardcoded expected Georgian date for the test
-    console.log('mockConvertHijriToGeorgian called with:', hijriDate); // Debugging log
+    const georgianDate = moment(hijriDate, 'iDD/iMM/iYYYY').toDate();
+    console.log('mockConvertHijriToGeorgian called with:', hijriDate, 'converted to:', georgianDate); // Debugging log
     return georgianDate;
 }
 
