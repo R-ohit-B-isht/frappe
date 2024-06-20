@@ -40,6 +40,7 @@ jest.mock('air-datepicker', () => {
                     console.log('update: hijriDate before conversion', this.hijriDate); // Debugging log
                     // Dynamic conversion from Hijri to Georgian date
                     const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
+                    console.log('update: georgianDate after conversion', georgianDate); // Additional logging
                     this.selectedDate = georgianDate || null;
                     console.log('update: set selectedDate to', this.selectedDate); // Debugging log
                     console.log('update: final state', this); // Debugging log
