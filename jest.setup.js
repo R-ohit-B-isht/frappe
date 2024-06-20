@@ -25,6 +25,7 @@ jest.mock('air-datepicker', () => {
         default: jest.fn().mockImplementation(() => {
             return {
                 selectDate: jest.fn(function(date) {
+                    console.log('selectDate: initial state', this); // Debugging log
                     this.selectedDate = date;
                     // Dynamic conversion from Georgian to Hijri date
                     if (date instanceof Date) {
@@ -32,12 +33,15 @@ jest.mock('air-datepicker', () => {
                         this.hijriDate = hijriDate || '';
                         console.log('selectDate: set hijriDate to', this.hijriDate); // Debugging log
                     }
+                    console.log('selectDate: final state', this); // Debugging log
                 }),
                 update: jest.fn(function() {
+                    console.log('update: initial state', this); // Debugging log
                     // Dynamic conversion from Hijri to Georgian date
                     const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
                     this.selectedDate = georgianDate || null;
                     console.log('update: set selectedDate to', this.selectedDate); // Debugging log
+                    console.log('update: final state', this); // Debugging log
                 }),
                 getSelectedDates: jest.fn(function() {
                     console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
@@ -56,6 +60,7 @@ if (!$.fn) {
 $.fn.datepicker = function() {
     const datepickerInstance = {
         selectDate: function(date) {
+            console.log('selectDate: initial state', this); // Debugging log
             this.selectedDate = date;
             // Dynamic conversion from Georgian to Hijri date
             if (date instanceof Date) {
@@ -63,12 +68,15 @@ $.fn.datepicker = function() {
                 this.hijriDate = hijriDate || '';
                 console.log('selectDate: set hijriDate to', this.hijriDate); // Debugging log
             }
+            console.log('selectDate: final state', this); // Debugging log
         },
         update: function() {
+            console.log('update: initial state', this); // Debugging log
             // Dynamic conversion from Hijri to Georgian date
             const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
             this.selectedDate = georgianDate || null;
             console.log('update: set selectedDate to', this.selectedDate); // Debugging log
+            console.log('update: final state', this); // Debugging log
         },
         getSelectedDates: function() {
             console.log('getSelectedDates: returning', [this.selectedDate]); // Debugging log
