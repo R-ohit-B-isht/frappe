@@ -3,7 +3,7 @@ import $ from 'jquery';
 global.$ = global.jQuery = $;
 
 // Helper functions for date conversion
-function convertGeorgianToHijri(date) {
+function mockConvertGeorgianToHijri(date) {
     // Implement the logic for converting Georgian date to Hijri date
     // This is a placeholder implementation
     const hijriDate = new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
@@ -14,7 +14,7 @@ function convertGeorgianToHijri(date) {
     return hijriDate;
 }
 
-function convertHijriToGeorgian(hijriDate) {
+function mockConvertHijriToGeorgian(hijriDate) {
     // Implement the logic for converting Hijri date to Georgian date
     // This is a placeholder implementation
     const [day, month, year] = hijriDate.split('/').map(Number);
@@ -37,13 +37,13 @@ jest.mock('air-datepicker', () => {
                     this.selectedDate = date;
                     // Dynamic conversion from Georgian to Hijri date
                     if (date instanceof Date) {
-                        const hijriDate = convertGeorgianToHijri(date);
+                        const hijriDate = mockConvertGeorgianToHijri(date);
                         this.hijriDate = hijriDate || '';
                     }
                 }),
                 update: jest.fn(function() {
                     // Dynamic conversion from Hijri to Georgian date
-                    const georgianDate = convertHijriToGeorgian(this.hijriDate);
+                    const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
                     this.selectedDate = georgianDate || null;
                 }),
                 getSelectedDates: jest.fn(function() {
@@ -65,13 +65,13 @@ $.fn.datepicker = function() {
             this.selectedDate = date;
             // Dynamic conversion from Georgian to Hijri date
             if (date instanceof Date) {
-                const hijriDate = convertGeorgianToHijri(date);
+                const hijriDate = mockConvertGeorgianToHijri(date);
                 this.hijriDate = hijriDate || '';
             }
         },
         update: function() {
             // Dynamic conversion from Hijri to Georgian date
-            const georgianDate = convertHijriToGeorgian(this.hijriDate);
+            const georgianDate = mockConvertHijriToGeorgian(this.hijriDate);
             this.selectedDate = georgianDate || null;
         },
         getSelectedDates: function() {
